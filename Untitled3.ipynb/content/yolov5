@@ -1,0 +1,63 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "mount_file_id": "1HPBIl9wuMs0yOP1BJfT9jiWe3QtIfBb5",
+      "authorship_tag": "ABX9TyNG6+sh0Qti/b785GQBlpGm"
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "lcoIMHZ1Tx4k",
+        "outputId": "c4816e17-0a91-499d-bd15-3f35226e7ec5"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n",
+            "                                 Dload  Upload   Total   Spent    Left  Speed\n",
+            "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n",
+            "100 15.7M  100 15.7M    0     0  13.2M      0  0:00:01  0:00:01 --:--:-- 13.2M\n",
+            "👨‍💻  Hi, I’m the Emojicode Installer!\n",
+            "\n",
+            "\u001b[1mI’ll copy the \u001b[36mEmojicode Compiler\u001b[m\u001b[1m to /usr/local/bin.\u001b[m\n",
+            "\u001b[1mThen I’ll copy the default packages to /usr/local/EmojicodePackages.\u001b[m\n",
+            "\u001b[1mFinally, I’ll copy the Emojicode API headers to /usr/local/include/emojicode.\u001b[m\n",
+            "If you prefer different locations you can rerun me and provide me with other locations like so:\n",
+            "\t ./install.sh [binary location] [packages location] [include location]\n",
+            "\n",
+            "If you want to proceed type y. ➡️  y\n",
+            "\n",
+            "Setting up packages directory in /usr/local/EmojicodePackages\u001b[m\n",
+            "Copying builds\u001b[m\n",
+            "Copying packages\u001b[m\n",
+            "\u001b[32m✅  Emojicode was successfully installed.\u001b[m\n"
+          ]
+        }
+      ],
+      "source": [
+        "!curl -o emojicode.tar.gz -L https://github.com/emojicode/emojicode/releases/download/v1.0-beta.2/Emojicode-1.0-beta.2-Darwin-x86_64.tar.gz \\\n",
+        "&& tar -xzf emojicode.tar.gz && rm emojicode.tar.gz \\\n",
+        "&& cd Emojicode-1.0-beta.2-Darwin-x86_64 && ./install.sh \\\n",
+        "&& cd .. && rm -r Emojicode-1.0-beta.2-Darwin-x86_64"
+      ]
+    }
+  ]
+}
