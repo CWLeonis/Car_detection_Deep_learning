@@ -13,6 +13,6 @@ Python packages to be installed:
 Tensorflow (Tensorflow-gpu if you have Nvidia GPU), openCV, imutils, Pillow, numpy, urllib, matplotlib
 
 # Results
-The results of trined model:
+The results of trianed model:
 ![Picture1 jpg](https://github.com/CWLeonis/Car_detection_Deep_learning/assets/144675525/ec47f653-8c8d-4846-8063-8f04ec7650d9)
 
