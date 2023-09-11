@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""yolov8_car_detect.ipynb
-
-Original file is located at
-    https://colab.research.google.com/drive/18D9aIr84cdr0gR8YxRPU9VWa4icYh025
-"""
-
 import zipfile
 import requests
 import cv2
@@ -16,11 +9,12 @@ import os
 !pip install ultralytics
 
 #Download the Dataset
-! curl -L "https://app.roboflow.com/ds/2blddBwCO9?key=eBxZH2Jy9L" > roboflow.zip; unzip roboflow.zip; rm roboflow.zip
+! curl -L "YOUR DATASET LINK HERE" #********************
 
 #Visualize Images from the Dataset
 import numpy as np
-class_names = ['Peugeot 206', 'Peugeot Persia Pars', 'Pride Saipa111', 'Pride Saipa131', 'Renault Tondar 90', 'Saipa Quik']
+#Put your class names in the class_names list********** 
+class_names = ['Peugeot 206', 'Peugeot Persia Pars', 'Pride Saipa111', 'Pride Saipa131', 'Renault Tondar 90', 'Saipa Quik'] 
 colors = np.random.uniform(0, 255, size=(len(class_names), 3))
 
 
@@ -119,15 +113,15 @@ def plot(image_paths, label_paths, num_samples):
 
 # Visualize a few training images.
 plot(
-    image_paths='/content/train/images',
-    label_paths='/content/train/labels',
+    image_paths='/train/images',
+    label_paths='/train/labels',
     num_samples=4,
 )
 
 #training for 25 epoch.
 EPOCHS = 25
 
-!yolo task=detect mode=train model=yolov8s.pt imgsz=640 data=/content/data.yaml epochs={EPOCHS} batch=16 name=yolov8s_model
+!yolo task=detect mode=train model=yolov8s.pt imgsz=640 data=/data.yaml epochs={EPOCHS} batch=16 name=yolov8s_model
 
 #Evaluation on Validation Images
 !yolo task=detect mode=val model=runs/detect/yolov8n_v8_50e/weights/best.pt name=yolov8n_eval data=pothole_v8.yaml
@@ -137,14 +131,14 @@ import glob as glob
 
 def inference(data_path):
     # Directory to store inference results.
-    infer_dir_count = len(glob.glob('/content/drive/MyDrive/detect/*'))
+    infer_dir_count = len(glob.glob('/detect/*'))
     print(f"Current number of inference detection directories: {infer_dir_count}")
     INFER_DIR = f"inference_{infer_dir_count+1}"
     print(INFER_DIR)
     # Inference on images.
     !yolo task=detect \
     mode=predict \
-    model=/content/drive/MyDrive/runs/detect/yolov8s_model/weights/best.pt \
+    model=/runs/detect/yolov8s_model/weights/best.pt \
     source={data_path} \
     imgsz=640 \
     name={INFER_DIR}
@@ -170,7 +164,5 @@ def visualize(result_dir, num_samples=1):
     plt.tight_layout()
     plt.show()
 
-dResult = inference('/content/9.jpg')
-visualize('/content/drive/MyDrive/detect/'+dResult)
-
-inference('/content/1.mp4')
+dResult = inference('****PATH TO THE JPG OR MP4****')
+visualize('****PATH TO THE detect folder and the last inference****')
