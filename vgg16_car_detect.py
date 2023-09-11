@@ -25,9 +25,9 @@ from sklearn.preprocessing import LabelBinarizer
 
 import pickle
 
-!curl -L "https://app.roboflow.com/ds/71bFp88puq?key=PcZgvyC2mW" > roboflow.zip; unzip roboflow.zip; rm roboflow.zip
+!curl -L "YOUR DATASET LINK HERE"  #****************
 
-classes = ['Pride Saipa131', 'pars', 'pezho206', 'pride', 'quick', 'tondar']
+classes = ['Pride Saipa131', 'pars', 'pezho206', 'pride', 'quick', 'tondar'] 
 
 def something(ann_path , images_path):
     data = []
