@@ -26,7 +26,7 @@ from sklearn.preprocessing import LabelBinarizer
 import pickle
 
 !curl -L "YOUR DATASET LINK HERE"  #****************
-
+#Put your class names in classes list below***********
 classes = ['Pride Saipa131', 'pars', 'pezho206', 'pride', 'quick', 'tondar'] 
 
 def something(ann_path , images_path):
@@ -76,8 +76,8 @@ imgplot = plt.imshow(image.astype('uint8'))
 plt.show()
 '''
 
-ann_path = "/content/train/_annotations.csv"
-images_path = "/content/train"
+ann_path = "/train/_annotations.csv"
+images_path = "/train"
 data_train = []
 labels_train = []
 bboxes_train = []
@@ -91,8 +91,8 @@ labels_train = np.array(labels_train)
 bboxes_train = np.array(bboxes_train, dtype="float32")
 imagePaths_train = np.array(imagePaths_train)
 #*************************************************************
-ann_path = "/content/valid/_annotations.csv"
-images_path = "/content/valid"
+ann_path = "/valid/_annotations.csv"
+images_path = "/valid"
 data_valid = []
 labels_valid = []
 bboxes_valid = []
@@ -104,8 +104,8 @@ labels_valid = np.array(labels_valid)
 bboxes_valid = np.array(bboxes_valid, dtype="float32")
 imagePaths_valid = np.array(imagePaths_valid)
 #************************************************************
-ann_path = "/content/test/_annotations.csv"
-images_path = "/content/test"
+ann_path = "/test/_annotations.csv"
+images_path = "/test"
 data_test = []
 labels_test = []
 bboxes_test = []
@@ -272,69 +272,9 @@ imagePaths = []
 for f in filenames:
     imagePaths.append(f)
 
-imagePaths = '/content/1.jpg'
-model = load_model("/content/model_car_detect")
-
-lb = pickle.loads(open("/content/lb.pickle", "rb").read())
-
-for imagePath in imagePaths:
-
-    # load the input image
-    image = load_img(imagePath, target_size=(224, 224))
-    image = img_to_array(image) / 255.0
-    image = np.expand_dims(image, axis=0)
-
-    # predict coordinates and classes
-    (boxPreds, labelPreds) = model.predict(image)
-    (startX, startY, endX, endY) = boxPreds[0]
-
-    # determine the class label
-    # with the largest predicted
-    # probability
-    i = np.argmax(labelPreds, axis=1)
-    label = lb.classes_[i][0]
-
-    # load the input image (in OpenCV format)
-    image = cv2.imread(imagePath)
-    image = imutils.resize(image, width=600)
-    (h, w) = image.shape[:2]
-
-    # scale the predicted bounding box
-    # coordinates based on the image
-    # dimensions
-    startX = int(startX * w)
-    startY = int(startY * h)
-    endX = int(endX * w)
-    endY = int(endY * h)
-
-
-    # draw the predicted bounding
-    # box and class label on the image
-    y = startY - 10 if startY - 10 > 10 else startY + 10
-
-    cv2.putText(image,
-                label,
-                (startX, y),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.65,
-                (0, 255, 0),
-                2)
-
-    cv2.rectangle(image,
-                  (startX, startY),
-                  (endX, endY),
-                  (0, 255, 0),
-                  2)
-
-
-    # show the output image
-    imgplot = plt.imshow(cv2.cvtColor(image,cv2.COLOR_BGR2RGB).astype('uint8'))
-    plt.axis('off')
-    plt.show()
-
-imagePath = '/content/3.jpg'
-model = load_model("/content/drive/MyDrive/model_car_detect")
-lb = pickle.loads(open("/content/drive/MyDrive/lb.pickle", "rb").read())
+imagePath = '*** PATH TO JPG FOR THE TEST***'
+model = load_model("/model_car_detect")
+lb = pickle.loads(open("/lb.pickle", "rb").read())
 
 # load the input image
 image = load_img(imagePath, target_size=(224, 224))
