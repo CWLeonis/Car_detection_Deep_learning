@@ -18,3 +18,6 @@ The results of trianed model:
 YOLOv5s:![Picture1 jpg](https://github.com/CWLeonis/Car_detection_Deep_learning/assets/144675525/ec47f653-8c8d-4846-8063-8f04ec7650d9)
 
 YOLOv5s vs VGG16 vs YOLOv8s:![Un](https://github.com/CWLeonis/Car_detection_Deep_learning/assets/144675525/46b1ba39-939c-43f3-a8c4-0e1a69bfa51c)
+
+# At the end...
+hope you enjoy this project, also don't forget that give me a star, thanks in advance ;)
